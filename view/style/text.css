@@ -1,0 +1,100 @@
+                /* élements de texte */
+
+p{
+        color: black;
+        text-align: justify;
+//        font-size: 1.4em;
+}
+
+h5 + p {
+        margin-top: 12px;
+}
+
+a{
+        text-decoration: none;
+        color: navy;
+        
+}
+
+
+                /* titre du header, le haut de page */
+header h1 {                                                             /* bloc du titre de haut de page */
+        text-align: center;
+        margin: 0px;
+}
+
+header h1 a {                                                           /* le titre est un lien vers index.php */
+        font-family: Quicksand, Verdana, sans-serif;
+        font-size: 2em;
+        font-variant: small-caps;
+        text-decoration: none;
+        color: maroon;
+        text-shadow: 2px 2px 7px maroon;
+}
+
+header h1 a:hover {
+        opacity: 0.8;
+}
+
+header h1+h1 a {                                                        /* second titre, extension du premier */
+        font-family: Existence, Verdana, sans-serif;
+        font-size: 1.5em;
+        font-variant: normal;
+        color: black;
+        text-shadow: 1px 1px 7px black;
+}
+
+
+                /* titre de la barre de navigation */
+nav h1{
+        font-family: Vanish;
+        font-size: 2.0em;
+        color: navy;
+        text-align: center;
+        font-weight: normal;
+        margin: 15px 5px 5px 5px;
+}
+
+
+                /* autres titres */
+section h1{
+        font-family: Vanish;
+        font-weight: normal;
+        font-variant: normal;
+        font-size: 3.5em;
+        color: green;
+        text-align: center;
+}
+
+h3{
+        font-family: Existence;
+        font-size: 3.2em;
+        font-weight: bold;
+        text-decoration: underline;
+        color: teal;
+        margin-top: 20px;
+        margin-bottom: 30px;
+}
+
+h4{
+        font-family: Existence;
+        font-size: 2.5em;
+        font-style: italic;
+        color: navy;
+        margin-top: 70px;
+        margin-bottom : 10px;
+}
+
+h5{
+        font-size: 2.0em;
+        font-family: Tangerine;
+        color: grey;
+        margin-top: 30px;
+        margin-bottom: 0px;
+}
+
+
+                /* liens du footer */
+footer a{
+        font-size: 1.2em;
+}

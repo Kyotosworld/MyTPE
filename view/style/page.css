@@ -1,0 +1,112 @@
+                /* background and box models */
+body {
+        background: url("../patterns/escheresque.png") repeat top left;
+        font-family: Quicksand, Verdana, Arial, sans-serif;
+}
+
+header {
+        margin: 0;
+        padding: 10px 40px 40px 20px;
+        border-bottom: 5px black double;
+}
+
+nav {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        padding: 0px 0px 40px 10px;
+
+        width: 25%;
+        height: 20%;
+        overflow: visible;
+        border-right: 5px black double;
+}
+nav ul {
+        list-style-type: none;
+        font-size: 1.2em;
+        padding-left: 20px;
+}
+form {
+        padding-bottom: 15px;
+        border-bottom: 5px black double;
+}        
+
+section {
+        display: inline-block;
+        vertical-align: top;    
+
+        margin: 0;
+        padding: 0px 20px 50px 50px;
+//        background-color: black;
+
+        width: 65%; 
+
+        overflow: auto;
+}
+
+footer {
+        margin: auto;
+        padding: 7px;
+
+        background-color: white;
+
+        width: 40%;
+        height: 3%;
+
+        text-align: center;     
+        font-style: italic;
+}
+
+footer ul {
+        list-style-type: none;
+        margin: 0px;
+}       
+
+footer ul li {
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+}
+
+                /* fonts */
+@font-face {
+        font-family: 'Quicksand';
+        src: url('../fonts/font-quicksand/Quicksand-Regular.otf');
+        font-weight: normal;
+        font-style: normal;
+}
+
+@font-face {
+        font-family: 'Daniel';
+        src: url('../fonts/font-daniel/daniel.ttf');
+        font-weight: normal;
+        font-style: normal;
+}
+
+@font-face {
+        font-family: 'Existence';
+        src: url('../fonts/font-existence/Existence-Light.otf');
+        font-weight: normal;
+        font-style: normal;
+}
+
+@font-face {
+        font-family: 'Tangerine';
+        src: url('../fonts/font-tangerine/Tangerine_Regular.ttf');
+        font-weight: normal;
+        font-style: normal;
+}
+
+@font-face {
+        font-family: 'Philosopher';
+        src: url('../fonts/font-philosopher/Philosopher-Regular.ttf');
+        font-weight: normal;
+        font-style: normal;
+}
+
+@font-face {
+        font-family: 'Vanish';
+        src: url('../fonts/font-vanish/vanish.ttf');
+        font-weight: normal;
+        font-style: normal;
+}

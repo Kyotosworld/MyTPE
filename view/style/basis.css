@@ -1,0 +1,86 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+ *    v2.0 | 20110126
+ *       License: none (public domain)
+ *       */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+        display: block;
+}
+body {
+        line-height: 1;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+ol, ul {
+        list-style: none;
+}
+blockquote, q {
+        quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+}
+table {
+        border-collapse: collapse;
+        border-spacing: 0;
+}
+img, object, embed {
+        max-width: 100%;
+}
+.clear {
+        clear:both;
+}
+
+#form1 label, #form1 input {
+    float: left;
+    padding: 0;
+}
+#search {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #c9c9c9 -moz-use-text-color #c9c9c9 #c9c9c9;
+    border-style: solid none solid solid;
+    border-width: 1px medium 1px 1px;
+    height: 35px;
+    line-height: 35px;
+    margin: 0;
+        width: 80%;
+        color: #BFBFBF;
+        font-size: 14px;
+}
+#go {
+        background: #e5f1f6; /* Old browsers */
+        background: -moz-linear-gradient(top, #e5f1f6 0%, #d0e6ef 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e5f1f6), color-stop(100%, #d0e6ef)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #e5f1f6 0%, #d0e6ef 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #e5f1f6 0%, #d0e6ef 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #e5f1f6 0%, #d0e6ef 100%); /* IE10+ */
+        background: linear-gradient(top, #e5f1f6 0%, #d0e6ef 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5f1f6', endColorstr='#d0e6ef', GradientType=0 ); /* IE6-9 */
+        border-color: #AFC6CD #AFC6CD #9CBAC5 #DADAD9;
+        border: 1px solid #9dbbc5;
+    height: 37px;
+    line-height: 27px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 20%;
+        font-weight: bold;
+        font-size: 12px;
+        color: #6B97A8;
+}
