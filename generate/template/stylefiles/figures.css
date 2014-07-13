@@ -1,0 +1,40 @@
+/*      non-text elements       */
+
+img {
+        border: 1px black solid;
+}
+figcaption {
+        text-align: center;
+        color: grey;
+        font-style: italic;
+}
+.img_float_left {
+        float: left;
+        margin-right: 3px;
+}
+#index_img {
+        display: inline-block;
+        vertical-align: top;
+        margin: 80px 0px 30px 50px;
+
+        border: 2px black solid;
+}
+
+
+/*      dynamic behaviours      */
+
+p:focus {
+        color: white;
+        background-color: black;
+        text-shadow: 5px 5px 7px white;
+}
+nav:hover {
+        overflow: hidden;
+}
+nav a:hover {
+        font-size: 1.2em;
+        font-weight: bold;
+}
+a:visited {
+        color: black;
+}

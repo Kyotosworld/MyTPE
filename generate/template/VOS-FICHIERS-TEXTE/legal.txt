@@ -1,0 +1,9 @@
+<h3>Mentions légales</h3>
+
+Polices utilisées :
+<ul>
+        <li><a href="../fonts/font-quicksand/SIL Open Font License.txt">Quicksand</a></li>
+        <li><a href="../fonts/font-daniel/Daniel Midgley.txt">Daniel</a></li>
+        <li><a href="../fonts/font-existence/Yeah Noah License.txt">Existence</a></li>
+        <li><a href="../fonts/font-tangerine/SIL Open Font License.txt">Tangerine</a></li>
+</ul>

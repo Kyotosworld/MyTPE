@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+                <meta charset="utf-8" />
+                <link rel="stylesheet" type="text/css" href="stylesheets.css" />
+                <meta name="viewport" content="width=device-width, initial-scale=0.7"> 
+                <!-- [if lt IE 9]>
+                        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+                <![endif]-->
+                <title>__VAR__001__ADDRESS</title>
+        </head>
+
+        <body>
+                <header>
+                        <h1>__VAR__002__TITLE<br />__VAR__003__TITLE-EXTENDED<br /></h1>
+                        <h1 id="index_names">__VAR__004__CLASS - __VAR__005__SUBJECT<br />
+                        __VAR__006__NAMES
+                        </h1>
+                </header>
+
+                <nav id="index_nav">
+                        <h1 id="nav_title">Plan du site :</h1>
+                        <ul>
+                                __VAR__020
+                        </ul>
+                </nav>
+
+                <img src="work_images/INDEX.jpg" alt="" id="index_img" />
+
+                <footer>
+                        <ul>
+                                <li><a href="webfiles/presentation.html">Présentation</a></li>
+                                <li><a href="webfiles/sources.html">Sources</a></li>
+                                <li><a href="webfiles/legal.html">Mentions légales</a></li>
+                        </ul>
+                </footer>
+        </body>
+</html>
