@@ -1,8 +1,4 @@
 <?php
-        session_start();
-        include('HEAD.html');
-        echo '<section>';
-
         if(isset($_GET['user'])) {
                 echo '<h2>Félicitations !!</h2>';
                 echo '<p>Votre site a été créé avec succès :) ,<br />';
@@ -12,9 +8,6 @@
         else {
                 echo '<h2>Nous sommes désolés :(</h2>';
                 echo '<p>Le fichier n\'a apparemment pas été créé...';
-                echo 'Veuillez <a href="index.php">réessayer</a>.</p>';
+                echo 'Veuillez <a href="creation.php?page=1">réessayer</a>.</p>';
         }
-
-        echo '</section>';
-        include('FOOT.html');
 ?>

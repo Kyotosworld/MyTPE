@@ -1,15 +1,9 @@
 <?php
-        session_start();
-        include('HEAD.html');
-        echo '<section>';
 
         echo '<h2>Formulaire Principal - Partie 2</h2>';
 
-
-//      Formulaire
-
-        if (isset($_SESSION['form_2']) && $_SESSION['form_2'] == true) {
-                echo '<form action="execute.php" method="post">';
+        if (isset($_SESSION['form_2']) && ($_SESSION['form_2'])) {
+                echo '<form action="master.php" method="post">';
                 echo '<input name="form" type="hidden" value="form-2.php"/>';
 
                 for ($i = 1; $i <= $_SESSION['TPE_number_people']; $i++)
@@ -21,8 +15,8 @@
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';
         }
-        elseif(isset($_SESSION['TPE_number_people'], $_SESSION['TPE_number_axe'])) {
-                echo '<form action="execute.php" method="post">';
+        elseif(isset($_SESSION['form_1']) && ($_SESSION['form_1'])) {
+                echo '<form action="master.php" method="post">';
                 echo '<input name="form" type="hidden" value="form-2.php"/>';
 
                 echo '<h3>Noms des participants du TPE :</h3>';
@@ -37,11 +31,8 @@
                 echo '</form>';
         }
         else {
-                echo '<p style="color: red; font-size: 1.2em">Erreur, veuillez remplir le <a href="form-1.php">formulaire 1</a> avant de continuer</p>
+                echo '<p style="color: red; font-size: 1.2em">Erreur, veuillez remplir le <a href="creation.php?page=1">formulaire 1</a> avant de continuer</p>
                       <p style="color: red; font-size: 1.2em">Si ce problème persiste, alors <strong>les cookies sont désactivés par votre navigateur.<br />
                       Veuillez les activer pour pouvoir continuer</strong> (nous garantissons qu\'aucune information personnelle n\'est stockée par notre site au moyen des cookies).</p>';
         }
-
-        echo'</section>';
-        include('FOOT.html');
 ?>

@@ -1,14 +1,8 @@
 <?php
-        session_start();
-        require_once('functions.php');
-
-        include('HEAD.html');
-        echo '<section>';
-
         echo '<h2>Formulaire Principal : Partie 1</h2>';
 
         if (isset($_SESSION['form_1']) && $_SESSION['form_1'] == true) {
-                echo '<form action="execute.php" method="post">';
+                echo '<form action="master.php" method="post">';
                 echo '<h3>Informations sur l\'utilisateur</h3>';
                 echo '<input name="form" type="hidden" value="form-1.php"/>';
                 echo '<label for="a">Nom d\'utilisateur :</label>
@@ -24,17 +18,15 @@
                 echo '<label for="f">Matières concernées :</label>
                       <input name="subject" type="text" size="40" id="f" value="'.$_SESSION['TPE_subject'].'"/><br />';
                 echo '<label for="g">Nombre de personnes :</label>
-                      <input name="number_people" type="number" id="g" value="'.$_SESSION['TPE_number_people'].'"/><br />';
-                echo '<label for="h">Nombre d\'axes d\'étude du sujet</label>
-                      <input name="number_axe" type="number" id="h" value="'.$_SESSION['TPE_number_axe'].'"/><br />';
+                      <input name="number_people" type="text" id="g" value="'.$_SESSION['TPE_number_people'].'"/><br />';
+                echo '<label for="h">Nombre d\'axes d\'étude du sujet :</label>
+                      <input name="number_axe" type="text" id="h" value="'.$_SESSION['TPE_number_axe'].'"/><br />';
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';
         }
         else {
 ?>
-
-
-                <form action="execute.php" method="post">
+                <form action="master.php" method="post">
                         <h3>Informations sur l'utilisateur</h3>
                         <input name="form" type="hidden" value="form-1.php"/>
 
@@ -44,13 +36,10 @@
                         <label for="d">Extension, titre secondaire :</label>    <input name="title_extended" type="text" size="40" id="d"/><br />
                         <label for="e">Classe :</label>                         <input name="class" type="text" size="10" id="e"/><br />
                         <label for="f">Matières concernées :</label>            <input name="subject" type="text" size="40" id="f"/><br />
-                        <label for="g">Nombre de personnes :</label>            <input name="number_people" type="number" id="g"/><br />
-                        <label for="h">Nombre d'axes d'étude du sujet</label> <input name="number_axe" type="number" id="h"/><br />
+                        <label for="g">Nombre de personnes :</label>            <input name="number_people" type="text" id="g"/><br />
+                        <label for="h">Nombre d'axes d'étude du sujet :</label> <input name="number_axe" type="text" id="h"/><br />
                         <input type="submit" value="Continuer"/>
                 </form>
 <?php
         }
-
-        echo'</section>';
-        include('FOOT.html');
 ?>

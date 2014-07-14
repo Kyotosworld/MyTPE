@@ -73,6 +73,11 @@
            echo '<p>$session_disconnect : ';if(isset($session_disconnect)) echo $session_disconnect; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$sql_connected : ';if(isset($sql_connected)) echo $sql_connected; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$sql_created : ';if(isset($sql_created)) echo $sql_created; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$page : ';if(isset($page)) echo $page; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$number_pages : ';if(isset($number_pages)) echo $number_pages; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$number_pages -1 : ';if(isset($number_pages)) echo ($number_pages-1); else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$error : ';if(isset($error)) echo $error; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$download : ';if(isset($download)) echo $download; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
 
         echo '</nav>';
 ?>

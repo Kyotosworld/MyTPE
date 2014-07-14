@@ -36,13 +36,33 @@ section {
         vertical-align: top;    
 
         margin: 0;
-        padding: 0px 20px 50px 50px;
+        padding: 0px 10px 10px 40px;
 //        background-color: black;
 
-        width: 65%; 
+        width: 70%; 
 
         overflow: auto;
 }
+section header {
+        padding: 10px 10px 10px 50px;
+        border: none;
+}
+section header ul {
+        list-style-type: none;
+        padding: 0px;
+}       
+section header ul li {
+        display: inline-block;
+        margin-right: 60px;
+        text-align: center;
+}
+section header ul li a {
+        font-family: Vanish;
+        font-size: 1.5em;
+        text-decoration: none;
+        color: maroon;
+}
+
 
 footer {
         margin: auto;
