@@ -23,14 +23,14 @@
                         $_SESSION['TPE_subject'] = $_POST['subject'];
                         $_SESSION['TPE_number_people'] = $_POST['number_people'];
                         $_SESSION['TPE_number_axe'] = $_POST['number_axe'];
-                        header('Location: creation.php?page=2');
+                        header('Location: ../creation.php?page=2');
                 } else {
                         $_SESSION['form_1'] = false;
-                        header('Location: creation.php?page=1');
+                        header('Location: ../creation.php?page=1');
                 }
         }
         elseif(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-2.php') &&
-               isset($_SESSION['form-1']) && ($_SESSION['form-1'])) {
+               isset($_SESSION['form_1']) && ($_SESSION['form_1'])) {
                 for ($i = 1; $i <= $_SESSION['TPE_number_people']; $i++) {
                         if(isset($_POST['people_'.$i]) && var_test($_POST['people_'.$i], 'string'))
                                 $_SESSION['TPE_people_'.$i] = $_POST['people_'.$i];
@@ -47,12 +47,12 @@
 
                 if(!(isset($_SESSION['form_2'])) || ($_SESSION['form_2'])) {
                         $_SESSION['form_2'] = true;
-                        header('Location: creation.php?page=3');
+                        header('Location: ../creation.php?page=3');
                 } else
-                        header('Location: creation.php?page=2');
+                        header('Location: ../creation.php?page=2');
         }
         elseif(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-3.php') &&
-                isset($_SESSION['form-2']) && ($_SESSION['form-2'])) {
+                isset($_SESSION['form_2']) && ($_SESSION['form_2'])) {
                 for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++) {
                         for ($j = 0; $j <= $_SESSION['TPE_number_part_axe_'.$i]; $j++) {
                                 if(isset($_POST['title_'.$i.'-'.$j]) && var_test($_POST['title_'.$i.'-'.$j], 'string'))
@@ -65,10 +65,11 @@
                         $_SESSION['form_3'] = true;
                         $download = true;
                 } else
-                        header('Location: creation.php?page=3');
+                        header('Location: ../creation.php?page=3');
         }
-        else
-                header('Location: creation.php');
+        else {
+                header('Location: ../creation.php');
+        }
 
 
 
@@ -76,7 +77,7 @@
                 /* uniquement si le troisième formulaire est rempli et conforme */
 
         if(isset($download) && ($download)) {
-                $command = './generate/master.sh';
+                $command = '../generate/master.sh';
 
                 $command = $command.' '.escapeshellarg($_SESSION['TPE_username']);
                 $command = $command.' '.escapeshellarg($_SESSION['TPE_address']);
@@ -104,13 +105,18 @@
                 foreach($shell_return as $key)
                         if($shell_return[$key] != '')
                                 $error = true;
-                if($error)
+                if($error) {
                         $_SESSION['generate'] = false;
-                        header('Location: creation.php?');
+//                        header('Location: ../creation.php');
+                        include('../view/HEAD.php');include('../view/NAV.php');echo '<section>';
+                        echo '<p>$command : '.$command.'</p>';
+                        echo '<pre>';print_r($shell_return);echo '</pre>';
+                        echo '</section>';include('../view/FOOT.php');
+                }
                 else
                         $_SESSION['generate'] = true;
  
                        /* WARNING : PAGE=4 A LA MAIN !! PAGE doit être égal à $number_pages de creation.php */
-                        header('Location: creation.php?page=4&user='.$_SESSION['TPE_username']);
+                        header('Location: ../creation.php?page=4&user='.$_SESSION['TPE_username']);
         }
 ?>

@@ -1,9 +1,8 @@
 <?php
-        echo '<h2>Formulaire Principal : Partie 1</h2>';
+        echo '<h2>Informations de base :</h2>';
 
         if (isset($_SESSION['form_1']) && $_SESSION['form_1'] == true) {
-                echo '<form action="master.php" method="post">';
-                echo '<h3>Informations sur l\'utilisateur</h3>';
+                echo '<form action="model/master.php" method="post">';
                 echo '<input name="form" type="hidden" value="form-1.php"/>';
                 echo '<label for="a">Nom d\'utilisateur :</label>
                       <input name="username" type="text" size="15" id="a" value="'.$_SESSION['TPE_username'].'"/><br />';
@@ -26,8 +25,7 @@
         }
         else {
 ?>
-                <form action="master.php" method="post">
-                        <h3>Informations sur l'utilisateur</h3>
+                <form action="model/master.php" method="post">
                         <input name="form" type="hidden" value="form-1.php"/>
 
                         <label for="a">Nom d'utilisateur :</label>             <input name="username" type="text" size="15" id="a"/><br />
