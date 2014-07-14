@@ -72,13 +72,7 @@ done
 
 ##              on va dans le dossier user/, pour que les commandes n'affectent aucun autre fichier du site
 ##              ou on le crée si il n'existe pas déjà
-folder_check=`ls -d user/`
-if [ $folder_check = 'user' ]; then
-        cd user
-else
-        mkdir user
-        cd user
-fi
+cd ../user
 touch $log $error
 chmod 666 $log $error
 echo -e "[$username.log]\n" >> $log
