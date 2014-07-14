@@ -11,6 +11,7 @@
                 else
                         $page_verified = true;
         }
+        else $page = 0;
 
 /*        if(isset($_SESSION['form_1']) && !($_SESSION['form_1']))
                 $error = true;

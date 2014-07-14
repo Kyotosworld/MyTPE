@@ -3,11 +3,11 @@
         include ('view/NAV.php');
         echo '<section>';
 
-                        /* header de la <section>, qui affiche les parties du formulaire */
 
+                        /* header de la <section>, qui donne des liens vers toutes les parties du formulaire */
         echo '<header>';
         echo '<ul>';
-        if(!(isset($page)) || ($page == 0))
+        if($page == 0)
                 echo '<li><a href="creation.php?" style="color:green">Général</a></li>';
         else
                 echo '<li><a href="creation.php?">Général</a></li>';
@@ -24,11 +24,17 @@
         echo '</header>';
 
 
+                        /* corps de la page */
         echo '<h1>Mon TPE :</h1>';
         if(isset($_SESSION['id']))
-                include('view/creation/form-'.$page.'.php');
+                if($page == 0)
+                        echo '<h2>Informations sur mon TPE</h2>';
+                else
+                        include('view/creation/form-'.$page.'.php');
         else
                 echo '<p style="color: red; font-size: 1.5em">Veuillez vous connecter pour accéder à ces informations</p>';
+
+
         echo '</section>';
         include ('view/FOOT.html');
 ?>
