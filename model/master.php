@@ -14,7 +14,6 @@
                    var_test($_POST['number_people'], 'int') &&
                    var_test($_POST['number_axe'], 'int')) {
 
-                        $_SESSION['form_1'] = true;
                         $_SESSION['TPE_username'] = $_POST['username'];
                         $_SESSION['TPE_address'] = $_POST['address'];
                         $_SESSION['TPE_title'] = $_POST['title'];
@@ -23,6 +22,11 @@
                         $_SESSION['TPE_subject'] = $_POST['subject'];
                         $_SESSION['TPE_number_people'] = $_POST['number_people'];
                         $_SESSION['TPE_number_axe'] = $_POST['number_axe'];
+
+                        $_SESSION['form_1'] = true;
+                        $_SESSION['form_2'] = false;
+                        $_SESSION['form_3'] = false;
+                        $_SESSION['generate'] = false;
                         header('Location: ../creation.php?page=2');
                 } else {
                         $_SESSION['form_1'] = false;
@@ -35,21 +39,25 @@
                         if(isset($_POST['people_'.$i]) && var_test($_POST['people_'.$i], 'string'))
                                 $_SESSION['TPE_people_'.$i] = $_POST['people_'.$i];
                         else
-                                $_SESSION['form_2'] = false;
+                                $form_2_error = true;
                 }
 
                 for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++) {
                         if(isset($_POST['number_part_axe_'.$i]) && var_test($_POST['number_part_axe_'.$i], 'int'))
                                 $_SESSION['TPE_number_part_axe_'.$i] = $_POST['number_part_axe_'.$i];
                         else
-                                $_SESSION['form_2'] = false;
+                                $form_2_error = true;
                 }
 
-                if(!(isset($_SESSION['form_2'])) || ($_SESSION['form_2'])) {
+                if(!(isset($form_2_error))) {
                         $_SESSION['form_2'] = true;
+                        $_SESSION['form_3'] = false;
+                        $_SESSION['generate'] = false;
                         header('Location: ../creation.php?page=3');
-                } else
+                } else {
+                        $_SESSION['form_2'] = false;
                         header('Location: ../creation.php?page=2');
+                }
         }
         elseif(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-3.php') &&
                 isset($_SESSION['form_2']) && ($_SESSION['form_2'])) {
@@ -58,14 +66,17 @@
                                 if(isset($_POST['title_'.$i.'-'.$j]) && var_test($_POST['title_'.$i.'-'.$j], 'string'))
                                         $_SESSION['TPE_title_'.$i.'-'.$j] = $_POST['title_'.$i.'-'.$j];
                                 else
-                                        $_SESSION['form_3'] = false;
+                                        $form_3_error = true;
                         }
                 }
-                if(!(isset($_SESSION['form_3'])) || ($_SESSION['form_3'])) {
+                if(!(isset($form_3_error))) {
                         $_SESSION['form_3'] = true;
+                        $_SESSION['generate'] = false;
                         $download = true;
-                } else
+                } else {
+                        $_SESSION['form_3'] = false;
                         header('Location: ../creation.php?page=3');
+                }
         }
         else {
                 header('Location: ../creation.php');
@@ -104,10 +115,11 @@
 
                 foreach($shell_return as $key)
                         if($shell_return[$key] != '')
-                                $error = true;
-                if($error) {
+                                $generate_error = true;
+                if($generate_error) {
                         $_SESSION['generate'] = false;
 //                        header('Location: ../creation.php');
+                                /* DEBUG */
                         include('../view/HEAD.php');include('../view/NAV.php');echo '<section>';
                         echo '<p>$command : '.$command.'</p>';
                         echo '<pre>';print_r($shell_return);echo '</pre>';

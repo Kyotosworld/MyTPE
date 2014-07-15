@@ -8,8 +8,6 @@
                 $page=(int) $_GET['page'];
                 if(($page < 1) || ($page > $number_pages))
                         $page = 0;
-                else
-                        $page_verified = true;
         }
         else $page = 0;
 
