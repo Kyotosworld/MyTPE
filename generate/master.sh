@@ -21,7 +21,7 @@
 #       Ainsi, le nombre d'axes reçus ne devrait pouvoir être inférieur à 4 : Introduction, Axe I, Conclusion, Synthèses
 #       Le premier axe sera consideré comme l'introduction, l'avant-dernier comme la conclusion, et le dernier commme les fiches de synthèses
 #
-#       Le titre de l'introduction sera de la forme __VAR__110, on considère qu'il n'a qu'une première partie qui se suffit à elle-même
+#       Le titre de l'introduction sera de la forme __VAR__110, on considère qu'il n'a qu'une partie non-numérotée qui se suffit à elle-même
 #       De même, ceux de la conclusion et des fiches de synthèse seront de la forme __VAR__1X0
 #       Tous ces titres particuliers ne seront ajoutés après 'introduction', 'conclusion', 'synthèses' que si ils sont existants
 
@@ -71,7 +71,6 @@ done
 
 
 ##              on va dans le dossier user/, pour que les commandes n'affectent aucun autre fichier du site
-##              ou on le crée si il n'existe pas déjà
 cd ../user
 touch $log $error
 chmod 666 $log $error
@@ -81,7 +80,12 @@ echo -e "[$username.log]\n" >> $log
 
 ##              copie du dossier template/ en un nouveau dossier portant l'adresse du site choisie par l'utilisateur comme nom
 echo '[cp]' >> $log
-cp -R --preserve=mode ../generate/template $address >> $log 2>> $error
+if [ -d $address ]; then
+        rm -R $address
+        cp -R --preserve=mode ../generate/template $address >> $log 2>> $error
+else
+        cp -R --preserve=mode ../generate/template $address >> $log 2>> $error
+fi
 
 
 
@@ -258,3 +262,5 @@ echo "__VAR__020__NUMBER-AXES : ${structure[0]}" >> $log
 for i in `seq 1 ${structure[0]}`; do
         echo "__VAR__02$i : ${structure[$i]}" >> $log
 done
+
+echo "`date "+%B %d at %H:%M"` : $address for $username" >> USERS.log
