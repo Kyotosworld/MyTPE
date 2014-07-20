@@ -6,6 +6,8 @@
         <h1>TODO :</h1>
         <h2>PHP :</h2>
                 <p>
+        * Ecrire la page "Informations sur mon TPE" pour qu'elle affiche quelque chose<br />
+        * Créer le titre "Commencer mon TPE", et rediriger automatiquement vers "Informations sur mon TPE" après connection<br />
         * Créer à l'intérieur des formulaires, en dessous de chaque champ, une image de ce qui sera modifié<br/>
                 </p>
         <h2>CSS :</h2>
