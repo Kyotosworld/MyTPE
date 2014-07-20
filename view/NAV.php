@@ -64,15 +64,24 @@
                 print_r($_SESSION);
                 echo'</pre>';
 
+
                 echo '<h1 style="font-size:1.5em;text-align: left; color: black;">Others</h1>';
+                echo '<p>$answer : ';if(isset($answer)) echo $answer;else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$username : ';if(isset($username)) echo $username; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$password : ';if(isset($password)) echo $password; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+           echo '<p>$session_disconnect : ';if(isset($session_disconnect)) echo $session_disconnect; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$create_username : ';if(isset($create_username)) echo $create_username; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$create_password : ';if(isset($create_password)) echo $create_password; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$create_email : ';if(isset($create_email)) echo $create_email; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
-           echo '<p>$session_disconnect : ';if(isset($session_disconnect)) echo $session_disconnect; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$sql_connected : ';if(isset($sql_connected)) echo $sql_connected; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
                 echo '<p>$sql_created : ';if(isset($sql_created)) echo $sql_created; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+           echo '<p>$sql_already_taken : ';if(isset($sql_already_taken)) echo $sql_already_taken;else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$page : ';if(isset($page)) echo $page; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$number_pages : ';if(isset($number_pages)) echo $number_pages; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$form_2_error : ';if(isset($form_2_error)) echo $form_2_error; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$form_3_error : ';if(isset($form_3_error)) echo $form_3_error; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$generate_error : ';if(isset($generate_error)) echo $generate_error; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
+                echo '<p>$download : ';if(isset($download)) echo $download; else echo '<em style="color:red;">UNSET</em>';echo '</p>';
 
         echo '</nav>';
 ?>

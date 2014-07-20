@@ -1,77 +1,126 @@
                 /* background and box models */
 body {
-        background: url("../patterns/escheresque.png") repeat top left;
+        background: url("../wallpaper.jpg") fixed repeat top left;
         font-family: Quicksand, Verdana, Arial, sans-serif;
 }
 
 header {
-        margin: 0;
-        padding: 10px 40px 40px 20px;
-        border-bottom: 5px black double;
+        margin: 10px 274px 40px;
+        border-radius: 50px;
+        padding: 5px;
+
+        background-color: white;
+        opacity: 0.65;
+
+        width: 65%;
+        height: 15%;
 }
 
 nav {
         display: inline-block;
         vertical-align: top;
-        margin: 0;
-        padding: 0px 0px 40px 10px;
+        margin: 0px 0px 30px 10px;
 
-        width: 25%;
-        height: 20%;
+        border-radius: 50px;
+        padding: 10px 0px 10px 0px;
+
+        background-color: white;
+        opacity: 0.65;
+
+        width: 13%;
+        height: 620px;
         overflow: visible;
-        border-right: 5px black double;
 }
+
 nav ul {
         list-style-type: none;
         font-size: 1.2em;
         padding-left: 20px;
 }
-form {
-        padding-bottom: 15px;
-        border-bottom: 5px black double;
-}        
+
+nav ul ol {
+        list-style-type: none;
+        list-style-position: outside;
+}
+
+#index_nav {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0px 0px 50px 10px;
+
+        border-radius: 50px;
+        padding: 10px 30px;
+
+        font-size: 1.3em;
+
+        background-color: white;
+        opacity: 0.65;
+
+        width: 50%;
+        height: 735px;
+        overflow: visible;
+}
+
+nav[id="index_nav"] ul {
+        list-style-type: upper-roman;
+}
+
+nav[id="index_nav"] ul ol {
+        list-style-type: decimal;
+        list-style-position: outside;
+}
 
 section {
         display: inline-block;
         vertical-align: top;    
 
-        margin: 0;
-        padding: 0px 10px 10px 40px;
-//        background-color: black;
+        margin: 0px 0px 30px 30px;
+        border-radius: 50px;
+        padding: 20px;
+        padding-top: 0px;
+
+        background-color: white;
+        opacity: 0.65;
 
         width: 70%; 
+        min-height: 380px;
+        max-height: 65%;
 
         overflow: auto;
 }
+
 section header {
-        padding: 10px 10px 10px 50px;
-        border: none;
-}
-section header ul {
-        list-style-type: none;
+        margin: 20px 0px 50px 0px;
+        border-radius: 0px;
         padding: 0px;
-}       
-section header ul li {
-        display: inline-block;
-        margin-right: 60px;
-        text-align: center;
-}
-section header ul li a {
-        font-family: Vanish;
-        font-size: 1.5em;
-        text-decoration: none;
-        color: maroon;
-}
-section form {
-        border: none;
+
+        width: 100%;
+        height: 100%;
 }
 
+section header ul {
+        list-style-type: none;
+        margin: 0px;
+}       
+
+section header ul li {
+        display: inline-block;
+        margin: 0px;
+        text-align: right;
+}
+
+section header ul li a.right {
+        margin-right: 500px;
+}
 
 footer {
         margin: auto;
+
+        border-radius: 50px;
         padding: 7px;
 
         background-color: white;
+        opacity: 0.65;
 
         width: 40%;
         height: 3%;
@@ -116,20 +165,6 @@ footer ul li {
 @font-face {
         font-family: 'Tangerine';
         src: url('../fonts/font-tangerine/Tangerine_Regular.ttf');
-        font-weight: normal;
-        font-style: normal;
-}
-
-@font-face {
-        font-family: 'Philosopher';
-        src: url('../fonts/font-philosopher/Philosopher-Regular.ttf');
-        font-weight: normal;
-        font-style: normal;
-}
-
-@font-face {
-        font-family: 'Vanish';
-        src: url('../fonts/font-vanish/vanish.ttf');
         font-weight: normal;
         font-style: normal;
 }

@@ -1,0 +1,117 @@
+                /* text elements */
+
+p{
+        color: black;
+        text-align: justify;
+        font-size: 1.4em;
+}
+
+h5 + p {
+        margin-top: 12px;
+}
+
+a{
+        color: navy;
+        
+}
+
+                /* classes for the em tag */
+.name{
+        font-style: italic;
+        font-weight: bold;
+        color: purple;
+}
+
+.date{
+        font-style: oblique;
+}
+
+.quote{
+        font-family : "Times New Roman", Arial, Helvetica, Quicksand;
+        font-style: italic;
+
+}
+
+                /* tag to write with a handwritten font paragraphs in the presentation page */
+section[id="handwritten"] h4+p {
+        font-family: Daniel;
+}
+
+                /* titles */
+h1{
+        font-family: Quicksand, Verdana, sans-serif;
+        font-size: 2.25em;
+        font-variant: small-caps;
+        color: maroon;
+        text-align: center;
+}
+
+h1[id="index_names"] {
+        font-size: 1.9em;
+        color: black;
+}
+
+h1 a[id="index_title"]{
+        text-decoration: none;
+        color: maroon;
+}
+
+h1 a[id="index_title"]:hover {
+        color: black;
+        opacity: 0.8;
+}
+
+header h1{
+        margin: 0px;
+}
+
+h1[id="nav_title"]{
+        font-family: Quicksand, Verdana, sans-serif;
+        font-size: 2.0em;
+        font-variant: small-caps;
+        color: navy;
+        text-align: center;
+        margin: 15px;
+}
+
+h2{
+        font-family: Tangerine;
+        font-size: 5em;
+        color: navy;
+        text-align: center;
+        border: 5px navy double;
+}
+
+h3{
+        font-family: Tangerine;
+        font-size: 3.2em;
+        font-weight: bold;
+        text-decoration: underline;
+        color: teal;
+        margin-top: 20px;
+        margin-bottom: 30px;
+}
+
+h4{
+        font-size: 2.5em;
+        font-style: italic;
+        font-family: Tangerine;
+        color: navy;
+        margin-top: 70px;
+        margin-bottom : 10px;
+}
+
+h5{
+        font-size: 2.0em;
+        font-family: Tangerine;
+        color: grey;
+        margin-top: 30px;
+        margin-bottom: 0px;
+}
+
+
+                /*    links    */
+footer a{
+        font-size: 1.2em;
+}
+

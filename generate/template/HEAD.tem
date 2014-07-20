@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+                <meta charset="utf-8" />
+                <link rel="stylesheet" type="text/css" href="stylesheets.css" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+                <!-- [if lt IE 9]>
+                        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+                <![endif]-->
+                <title>__VAR__001__ADDRESS</title>
+        </head>
+
+        <body>
+                <header>
+                        <h1><a id="index_title" href="index.html">__VAR__002__TITLE</a><br />__VAR__003__TITLE-EXTENDED</h1>
+                </header>
+
+                <nav>
+                        <h1 id="nav_title">Plan du site</h1>
+                        <ul>
+                                __VAR__020
+                        </ul>
+                </nav>
+                <section>
