@@ -5,13 +5,18 @@
 
                 echo '<h2>Noms des participants du TPE :</h2>';
                 for ($i = 1; $i <= $_SESSION['TPE_number_people']; $i++)
-                        echo '<label for="a_'.$i.'">Participant n°'.$i.'</label>
+                        echo '<label for="a_'.$i.'">Participant n°'.$i.' : </label>
                               <input id="a_'.$i.'" name="people_'.$i.'" type="text" value="'.$_SESSION['TPE_people_'.$i].'"/><br />';
 
                 echo '<h2>Nombre de parties de chaque axe du TPE :</h2>';
-                for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++)
-                        echo '<label for="b_'.$i.'">Nombre de partie de l\'axe n°'.$i.'</label>
-                              <input id="b_'.$i.'" name="number_part_axe_'.$i.'" type="text" value="'.$_SESSION['TPE_number_part_axe_'.$i].'"/><br />';
+                $debut = $_SESSION['TPE_structure_intro'] + 1;
+                $fin = $_SESSION['TPE_number_axe'] - $_SESSION['TPE_structure_conclu'] - $_SESSION['TPE_structure_synth'];
+                $j = 1;
+                for ($i = $debut; $i <= $fin; $i++) {
+                        echo '<label for="b_'.$j.'">Nombre de parties de l\'axe n°'.$j.' : </label>
+                              <input id="b_'.$j.'" name="number_part_axe_'.$i.'" type="text" value="'.$_SESSION['TPE_number_part_axe_'.$i].'"/><br />';
+                        $j++;
+                }
 
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';
@@ -22,13 +27,18 @@
 
                 echo '<h2>Noms des participants du TPE :</h2>';
                 for ($i = 1; $i <= $_SESSION['TPE_number_people']; $i++)
-                        echo '<label for="a_'.$i.'">Participant n°'.$i.'</label>
+                        echo '<label for="a_'.$i.'">Participant n°'.$i.' : </label>
                               <input id="a_'.$i.'" name="people_'.$i.'" type="text"/><br />';
 
                 echo '<h2>Nombre de parties de chaque axe du TPE :</h2>';
-                for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++)
-                        echo '<label for="b_'.$i.'">Nombre de partie de l\'axe n°'.$i.'</label>
-                              <input id="b_'.$i.'" name="number_part_axe_'.$i.'" type="text"/><br />';
+                $debut = $_SESSION['TPE_structure_intro'] + 1;
+                $fin = $_SESSION['TPE_number_axe'] - $_SESSION['TPE_structure_conclu'] - $_SESSION['TPE_structure_synth'];
+                $j = 1;
+                for ($i = $debut; $i <= $fin; $i++) {
+                        echo '<label for="b_'.$j.'">Nombre de partie de l\'axe n°'.$j.' : </label>
+                              <input id="b_'.$j.'" name="number_part_axe_'.$i.'" type="text"/><br />';
+                        $j++;
+                }
 
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';

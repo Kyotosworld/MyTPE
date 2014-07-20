@@ -4,17 +4,37 @@
                 echo '<input name="form" type="hidden" value="form-3.php"/>';
 
                 echo '<h2>Titres des différentes parties du TPE</h2>';
-                for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++)
+                $debut = $_SESSION['TPE_structure_intro'] + 1;
+                $fin = $_SESSION['TPE_number_axe'] - $_SESSION['TPE_structure_conclu'] - $_SESSION['TPE_structure_synth'];
+                $k = 1;
+                if($_SESSION['TPE_structure_intro'] == 1) {
+                                echo '<h2 style="color: teal;margin-bottom: 5px;">Introduction</h2>';
+                                echo '<label for="a_'.$k.'_0">Titre de l\'introduction (optionnel) : </label>
+                                <input name="title_1-0" id="a_'.$k.'_0" type="text" value="'.$_SESSION['TPE_title_1-0'].'"/><br />';
+                                $k++;
+                }
+                for ($i = $debut; $i <= $fin; $i++) {
                         for ($j = 0; $j <= $_SESSION['TPE_number_part_axe_'.$i]; $j++) {
                                 if ($j == 0) {
-                                echo '<h2 style="color: teal;margin-bottom: 5px;">Axe '.$i.'</h2>';
-                                echo '<label for="a_'.$i.'_'.$j.'">Titre de l\'axe '.$i.'</label>
-                                <input name="title_'.$i.'-'.$j.'" id="a_'.$i.'_'.$j.'" type="text" value="'.$_SESSION['TPE_title_'.$i.'-'.$j].'"/><br />';
+                                echo '<h2 style="color: teal;margin-bottom: 5px;">Axe '.$k.'</h2>';
+                                echo '<label for="a_'.$k.'_'.$j.'">Titre de l\'axe '.$k.' : </label>
+                                <input name="title_'.$i.'-'.$j.'" id="a_'.$k.'_'.$j.'" type="text" value="'.$_SESSION['TPE_title_'.$i.'-'.$j].'"/><br />';
                                 }
                                 else
-                                echo '<label for="a_'.$i.'_'.$j.'">Titre de la partie '.$j.'</label>
-                                <input name="title_'.$i.'-'.$j.'" id="a_'.$i.'_'.$j.'" type="text" value="'.$_SESSION['TPE_title_'.$i.'-'.$j].'"/><br />';
+                                echo '<label for="a_'.$k.'_'.$j.'">Titre de la partie '.$j.' : </label>
+                                <input name="title_'.$i.'-'.$j.'" id="a_'.$k.'_'.$j.'" type="text" value="'.$_SESSION['TPE_title_'.$i.'-'.$j].'"/><br />';
                         }
+                        $k++;
+                }
+                if(($_SESSION['TPE_structure_conclu']) && ($_SESSION['TPE_structure_synth'])) $l = 1;
+                else $l = 0;
+                if($_SESSION['TPE_structure_conclu'] == 1) {
+                                echo '<h2 style="color: teal;margin-bottom: 5px;">Conclusion</h2>';
+                                echo '<label for="a_'.$k.'_0">Titre de la conclusion (optionnel) : </label>
+                                <input name="title_'.($_SESSION['TPE_number_axe']-$l).'-0" id="a_'.$k.'_0" type="text" 
+                                value="'.$_SESSION['TPE_title_'.($_SESSION['TPE_number_axe']-$l).'-0'].'"  /><br />';
+                                $k++;
+                }
 
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';
@@ -24,17 +44,36 @@
                 echo '<input name="form" type="hidden" value="form-3.php"/>';
 
                 echo '<h2>Titres des différentes parties du TPE</h2>';
-                for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++)
+                $debut = $_SESSION['TPE_structure_intro'] + 1;
+                $fin = $_SESSION['TPE_number_axe'] - $_SESSION['TPE_structure_conclu'] - $_SESSION['TPE_structure_synth'];
+                $k = 1;
+                if($_SESSION['TPE_structure_intro'] == 1) {
+                                echo '<h2 style="color: teal;margin-bottom: 5px;">Introduction</h2>';
+                                echo '<label for="a_'.$k.'_0">Titre de l\'introduction (optionnel) : </label>
+                                <input name="title_1-0" id="a_'.$k.'_0" type="text" /><br />';
+                                $k++;
+                }
+                for ($i = $debut; $i <= $fin; $i++) {
                         for ($j = 0; $j <= $_SESSION['TPE_number_part_axe_'.$i]; $j++) {
                                 if ($j == 0) {
-                                echo '<h2 style="color: teal;margin-bottom: 5px;">Axe '.$i.'</h2>';
-                                echo '<label for="a_'.$i.'_'.$j.'">Titre de l\'axe '.$i.'</label>
-                                <input name="title_'.$i.'-'.$j.'" id="a_'.$i.'_'.$j.'" type="text" value="DEBUG : A'.$i.' P'.$j.'"/><br />';
+                                echo '<h2 style="color: teal;margin-bottom: 5px;">Axe '.$k.'</h2>';
+                                echo '<label for="a_'.$k.'_'.$j.'">Titre de l\'axe '.$k.' : </label>
+                                <input name="title_'.$i.'-'.$j.'" id="a_'.$k.'_'.$j.'" type="text" value="DEBUG : A'.$k.' P'.$j.'"/><br />';
                                 }
                                 else
-                                echo '<label for="a_'.$i.'_'.$j.'">Titre de la partie '.$j.'</label>
-                                <input name="title_'.$i.'-'.$j.'" id="a_'.$i.'_'.$j.'" type="text" value="DEBUG : A'.$i.' P'.$j.'"/><br />';
+                                echo '<label for="a_'.$k.'_'.$j.'">Titre de la partie '.$j.' : </label>
+                                <input name="title_'.$i.'-'.$j.'" id="a_'.$k.'_'.$j.'" type="text" value="DEBUG : A'.$k.' P'.$j.'"/><br />';
                         }
+                        $k++;
+                }
+                if(($_SESSION['TPE_structure_conclu']) && ($_SESSION['TPE_structure_synth'])) $l = 1;
+                else $l = 0;
+                if($_SESSION['TPE_structure_conclu'] == 1) {
+                                echo '<h2 style="color: teal;margin-bottom: 5px;">Conclusion</h2>';
+                                echo '<label for="a_'.$k.'_0">Titre de la conclusion (optionnel) : </label>
+                                <input name="title_'.($_SESSION['TPE_number_axe']-$l).'-0" id="a_'.$k.'_0" type="text" /><br />';
+                                $k++;
+                }
 
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';

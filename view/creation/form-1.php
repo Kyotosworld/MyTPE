@@ -18,8 +18,20 @@
                       <input name="subject" type="text" size="40" id="f" value="'.$_SESSION['TPE_subject'].'"/><br />';
                 echo '<label for="g">Nombre de personnes :</label>
                       <input name="number_people" type="text" id="g" value="'.$_SESSION['TPE_number_people'].'"/><br />';
-                echo '<label for="h">Nombre d\'axes d\'étude du sujet :</label>
-                      <input name="number_axe" type="text" id="h" value="'.$_SESSION['TPE_number_axe'].'"/><br />';
+
+                echo '<h2>Structure du TPE (seul ce qui est coché sera créé) :</h2>';
+                if($_SESSION['TPE_structure_intro'] == 1)
+                        echo '<input type="checkbox" name="structure_intro" id="h" checked /><label for="h">Introduction</label><br />';
+                else    echo '<input type="checkbox" name="structure_intro" id="h" /><label for="h">Introduction</label><br />';
+                echo '<label for="i">Nombre d\'axes d\'étude :</label>
+                      <input name="structure_axe" type="text" id="i" value="'.$_SESSION['TPE_structure_axe'].'"/><br />';
+                if($_SESSION['TPE_structure_conclu'] == 1)
+                        echo '<input type="checkbox" name="structure_conclu" id="j" checked /><label for="j">Conclusion</label><br />';
+                else    echo '<input type="checkbox" name="structure_conclu" id="j" /><label for="j">Conclusion</label><br />';
+                if($_SESSION['TPE_structure_synth'] == 1)
+                        echo '<input type="checkbox" name="structure_synth" id="k" checked /><label for="k">Fiches de synthèse</label><br />';
+                else    echo '<input type="checkbox" name="structure_synth" id="k" /><label for="k">Fiches de synthèse</label><br />';
+
                 echo '<input type="submit" value="Continuer"/>';
                 echo '</form>';
         }
@@ -35,7 +47,13 @@
                         <label for="e">Classe :</label>                         <input name="class" type="text" size="10" id="e"/><br />
                         <label for="f">Matières concernées :</label>            <input name="subject" type="text" size="40" id="f"/><br />
                         <label for="g">Nombre de personnes :</label>            <input name="number_people" type="text" id="g"/><br />
-                        <label for="h">Nombre d'axes d'étude du sujet :</label> <input name="number_axe" type="text" id="h"/><br />
+
+                        <h2>Structure du TPE (seul ce qui est coché sera créé) :</h2>
+                        <input type="checkbox" name="structure_intro" id="h" checked /><label for="h">Introduction</label><br />
+                        <label for="i">Nombre d'axes d'étude :</label> <input name="structure_axe" type="text" id="i"/><br />
+                        <input type="checkbox" name="structure_conclu" id="j" checked /><label for="j">Conclusion</label><br />
+                        <input type="checkbox" name="structure_synth" id="k" checked /><label for="k">Fiches de synthèse</label><br />
+
                         <input type="submit" value="Continuer"/>
                 </form>
 <?php
