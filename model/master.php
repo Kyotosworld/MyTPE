@@ -81,20 +81,23 @@
         elseif(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-3.php') &&
                 isset($_SESSION['form_2']) && ($_SESSION['form_2'])) {
 
-                if(isset($_SESSION['TPE_structure_intro'])) {
-                        if(isset($_POST['title_1-0'])) $_SESSION['TPE_title_1-0'] = $_POST['title_1-0'];
-                        else $form_3_error = true;
+                if($_SESSION['TPE_structure_intro']) {
+                        if(isset($_POST['title_1-0']))
+                                $_SESSION['TPE_title_1-0'] = $_POST['title_1-0'];
+                        else
+                                $form_3_error = true;
                 }
-                if(isset($_SESSION['TPE_structure_conclu'])) {
-                        if(!(isset($_SESSION['TPE_structure_synth'])) && isset($_POST['title_'.$_SESSION['TPE_number_axe'].'-0'])) 
+                if($_SESSION['TPE_structure_conclu']) {
+                        if(!($_SESSION['TPE_structure_synth']) && isset($_POST['title_'.$_SESSION['TPE_number_axe'].'-0']))
                                 $_SESSION['TPE_title_'.$_SESSION['TPE_number_axe'].'-0'] = $_POST['title_'.$_SESSION['TPE_number_axe'].'-0'];
-                        elseif(isset($_SESSION['TPE_structure_synth'] ,$_POST['title_'.($_SESSION['TPE_number_axe']-1).'-0'])) {
+                        elseif(($_SESSION['TPE_structure_synth']) && isset($_POST['title_'.($_SESSION['TPE_number_axe']-1).'-0'])) {
                                 $_SESSION['TPE_title_'.($_SESSION['TPE_number_axe']-1).'-0'] = $_POST['title_'.($_SESSION['TPE_number_axe']-1).'-0'];
+//                                      on annule alors la valeur du titre des fiches de synthèses : elles ne sont pas des parties
                                 $_SESSION['TPE_title_'.$_SESSION['TPE_number_axe'].'-0'] = '';
                         }
                         else $form_3_error = true;
                 }
-                elseif(isset($_SESSION['TPE_structure_synth']))
+                elseif($_SESSION['TPE_structure_synth'])
                         $_SESSION['TPE_title_'.$_SESSION['TPE_number_axe'].'-0'] = '';
 
                 $debut = $_SESSION['TPE_structure_intro'] + 1;
