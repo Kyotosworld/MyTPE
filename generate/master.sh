@@ -14,16 +14,20 @@
 #__VAR__00(6+x)__NAME-NUMBER x
 #__VAR__020 : nombre d'axes
 #__VAR__02X : nombre de parties dans l'axe X
+#__VAR__031 : introduction existante ou non
+#__VAR__032 : conclusion existante ou non
+#__VAR__033 : fiches de synthèses existante ou non
 #__VAR__1X0 : titre de l'axe X, introduction à l'axe X
 #__VAR__1XY : titre de la partie Y de l'axe X
 
 #NOTE : On considèrera l'introduction, la conclusion, et les fiches de synthèses comme faisant partie du nombre d'axes reçus
-#       Ainsi, le nombre d'axes reçus ne devrait pouvoir être inférieur à 4 : Introduction, Axe I, Conclusion, Synthèses
-#       Le premier axe sera consideré comme l'introduction, l'avant-dernier comme la conclusion, et le dernier commme les fiches de synthèses
+#       Puis l'on testera la valeur des booléens __VAR__03X qui informent de leur existence ou de leur non-existence
+#       Ainsi les liens seront seulement adaptés pour correspondre à des formes particulières
 #
 #       Le titre de l'introduction sera de la forme __VAR__110, on considère qu'il n'a qu'une partie non-numérotée qui se suffit à elle-même
 #       De même, ceux de la conclusion et des fiches de synthèse seront de la forme __VAR__1X0
 #       Tous ces titres particuliers ne seront ajoutés après 'introduction', 'conclusion', 'synthèses' que si ils sont existants
+#       Dans ce cas, ils seront aussi affectés grace aux booléens __VAR__03X
 
 
 ##              affectation des variables simples
@@ -55,6 +59,10 @@ for i in `seq 1 ${structure[0]}`; do
         shift
 done
 
+##              affectation des booléens définissant l'existence des parties spéciales
+intro_defined=$1; shift
+conclu_defined=$1; shift
+synth_defined=$1; shift
 
 ##              affectation des titres
 let "number_titles = 0"
@@ -80,6 +88,7 @@ echo -e "[$username.log]\n" >> $log
 
 ##              copie du dossier template/ en un nouveau dossier portant l'adresse du site choisie par l'utilisateur comme nom
 echo '[cp]' >> $log
+###     un test -d vérifie si $adress est un répertoire existant : pour ne pas copier le répertoire dedans si il existe
 if [ -d $address ]; then
         rm -R $address
         cp -R --preserve=mode ../generate/template $address >> $log 2>> $error
@@ -123,11 +132,29 @@ done
 ###     les deux derniers axes sont la conclusion et les fiches de synthèses
 echo "[sed] variables indéfinies pour HEAD : Axes" >> $log
 let "axe=1"
-let "axe_conclu = ${structure[0]}-1"
-let "axe_synth = ${structure[0]}"
 
-for i in '0' 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII' 'IX' 'X'; do
-        if [ $axe -eq 1 ]; then                         ### pour le premier axe, la ligne majeure d'introduction
+if [ $intro_defined -eq 1 ]; then
+        let "axe_intro = 1"
+else
+        let "axe_intro = 0"
+fi
+if [ $conclu_defined -eq 1 ] && [ $synth_defined -eq 1 ]; then
+        let "axe_conclu = ${structure[0]}-1"
+        let "axe_synth = ${structure[0]}"
+elif [ $conclu_defined -eq 1 ] && [ $synth_defined -eq 0 ]; then
+        let "axe_conclu = ${structure[0]}"
+        let "axe_synth = 0"
+elif [ $conclu_defined -eq 0 ] && [ $synth_defined -eq 1 ]; then
+        let "axe_conclu = 0"
+        let "axe_synth = ${structure[0]}"
+else
+        let "axe_conclu = 0"
+        let "axe_synth = 0"
+fi
+
+
+for i in '0' 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII' 'IX' 'X' 'XI' 'XII' 'XII' 'XIV' 'XV'; do
+        if [ $axe -eq $axe_intro ]; then                         ### pour le premier axe, la ligne majeure d'introduction
                 sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\" title=\"__VAR__110\"><br />Introduction</a></li>" $address/HEAD.tem >> $log 2>> $error
 
         elif [ $axe -eq $axe_conclu ]; then             ### pour l'avant-dernier axe, la ligne majeure de conclusion
@@ -167,15 +194,34 @@ done
 
 
 ###                             __VAR__020 pour index.html
-###             structure identique à la boucle __VAR__020 pour HEAD, en remplacant $axe par $i
+###             structure semblable à la boucle __VAR__020 pour HEAD, en remplacant $axe par $i
+###             MAIS si le test [ -d $x_title ] est vérifié, sed ajoute DIRECTEMENT le titre
 echo "[sed] variables indéfinies pour index.html : Axes" >> $log
+
+for i in `seq 1 $number_titles`; do
+        axe=`echo ${title[$i]} | cut -d \# -f 1`
+        if [ $axe -eq $axe_intro ];then
+                intro_title=`echo ${title[$i]} | cut -d \# -f 3`
+        elif [ $axe -eq $axe_conclu ];then
+                conclu_title=`echo ${title[$i]} | cut -d \# -f 3`
+        elif [ $axe -eq $axe_synth ];then
+                synth_title=`echo ${title[$i]} | cut -d \# -f 3`
+        fi
+done
+
 for i in `seq 1 ${structure[0]}`; do
-##      if [ $i -eq 1 ] && [ __VAR__111 != '']; then
-##              sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\">Introduction : __VAR__111</a></li>" $address/index.html.tem >> $log 2>> $error
-        if [ $i -eq 1 ]; then
+###  teste d'abord si la chaine du titre exite ou non, si oui ajoute un deux-points et le titre
+###  les "" empechent l'expansion du titre qui causerait une erreur "Too many arguments"
+        if [ $i -eq $axe_intro ] && [ -n "$intro_title" ]; then
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\">Introduction : $intro_title</a></li>" $address/index.html.tem >> $log 2>> $error
+        elif [ $i -eq $axe_intro ]; then
                 sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\">Introduction</a></li>" $address/index.html.tem >> $log 2>> $error
+        elif [ $i -eq $axe_conclu ] && [ -n "$conclu_title" ]; then
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Conclusion : $conclu_title</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_conclu ]; then
                 sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Conclusion</a></li>" $address/index.html.tem >> $log 2>> $error
+        elif [ $i -eq $axe_synth ] && [ -n "$synth_title" ]; then
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Fiches de synthèse : $synth_title</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_synth ]; then
                 sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Fiches de synthèse</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -le ${structure[0]} ]; then 
@@ -261,6 +307,18 @@ done
 echo "__VAR__020__NUMBER-AXES : ${structure[0]}" >> $log
 for i in `seq 1 ${structure[0]}`; do
         echo "__VAR__02$i : ${structure[$i]}" >> $log
+done
+
+echo "#__VAR__031__INTRO : $intro_defined" >> $log
+echo "#__VAR__032__CONCLU : $conclu_defined" >> $log
+echo "#__VAR__033__SYNTH : $synth_defined" >> $log
+
+echo "__VAR__1XX__TITLES" >> $log
+for i in `seq 1 $number_titles`; do
+        axe=`echo ${title[$i]} | cut -d \# -f 1`
+        part=`echo ${title[$i]} | cut -d \# -f 2`
+        text=`echo ${title[$i]} | cut -d \# -f 3`
+        echo "__VAR__1$axe$part : $text" >> $log
 done
 
 echo "`date "+%B %d at %H:%M"` : $address for $username" >> USERS.log

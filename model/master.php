@@ -116,13 +116,6 @@
                         $_SESSION['generate'] = false;
                         $download = true;
                 } else {
-                        /* DEBUG */
-
-//      afficher tout pour vérifier si variables trafiquées pour passer le test sont correctement passées
-//      prendre commande et véirifer que master.sh crée user/ si inexistant, et supprime user/$address si déjà existant
-//      committer une fois avec uniquement master.sh clean
-
-
                         $_SESSION['form_3'] = false;
                         header('Location: ../creation.php?page=3');
                 }
@@ -156,6 +149,10 @@
                 for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++)
                         $command = $command.' '.escapeshellarg($_SESSION['TPE_number_part_axe_'.$i]);
 
+                $command = $command.' '.escapeshellarg($_SESSION['TPE_structure_intro']);
+                $command = $command.' '.escapeshellarg($_SESSION['TPE_structure_conclu']);
+                $command = $command.' '.escapeshellarg($_SESSION['TPE_structure_synth']);
+
                 for ($i = 1; $i <= $_SESSION['TPE_number_axe']; $i++)
                         for ($j = 0; $j <= $_SESSION['TPE_number_part_axe_'.$i]; $j++)
                                 $command = $command.' '.escapeshellarg($_SESSION['TPE_title_'.$i.'-'.$j]);
@@ -171,11 +168,13 @@
                 }
                 else {
                         $_SESSION['generate'] = true;
+
                                 /* DEBUG */
 /*                        include('../view/HEAD.html');include('../view/NAV.php');echo '<section>';
                         echo '<p>$command : '.$command.'</p>';
                         echo '<pre>';print_r($shell_return);echo '</pre>';
-                        echo '</section>';include('../view/FOOT.html'); */
+                        echo '</section>';include('../view/FOOT.html');
+*/
                 }
 
  
