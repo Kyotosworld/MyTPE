@@ -66,8 +66,10 @@
                         }
                         $k++;
                 }
-                if(($_SESSION['TPE_structure_conclu']) && ($_SESSION['TPE_structure_synth'])) $l = 1;
-                else $l = 0;
+                if(($_SESSION['TPE_structure_conclu']) && ($_SESSION['TPE_structure_synth']))
+                        $l = 1;
+                else
+                        $l = 0;
                 if($_SESSION['TPE_structure_conclu'] == 1) {
                                 echo '<h2 style="color: teal;margin-bottom: 5px;">Conclusion</h2>';
                                 echo '<label for="a_'.$k.'_0">Titre de la conclusion (optionnel) : </label>
