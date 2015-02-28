@@ -1,20 +1,17 @@
 <?php
-        require('model/functions.php');
-
-
                         /* récupération des variables de connection au compte sql */
 
         if(isset($_POST['username'], $_POST['password'])) {
-               if(var_test($_POST['username'], 'string') && var_test($_POST['password'], 'string')) {
+               if(is_string($_POST['username']) && is_string($_POST['password'])) {
                        $username = $_POST['username'];
                        $password = $_POST['password'];
                }
         }
         elseif(isset($_POST['create_username'], $_POST['create_password'], $_POST['create_confirm_password'], $_POST['create_email'])) {
-               if(var_test($_POST['create_username'], 'string') && 
-                  var_test($_POST['create_password'], 'string') &&
-                  var_test($_POST['create_confirm_password'], 'string') &&
-                  var_test($_POST['create_email'], 'string')) {
+               if(is_string($_POST['create_username']) && 
+                  is_string($_POST['create_password']) &&
+                  is_string($_POST['create_confirm_password']) &&
+                  is_string($_POST['create_email'])) {
                        $create_username = $_POST['create_username'];
                        if($_POST['create_password'] == $_POST['create_confirm_password'])
                                $create_password = $_POST['create_password'];

@@ -1,5 +1,4 @@
 <?php
-
 //              la connection avec la base de données s'est faite correctement
 //              on récupère donc toutes les informations d'utilisateur pour les placer dans $_SESSION
 

@@ -155,16 +155,16 @@ fi
 
 for i in '0' 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII' 'IX' 'X' 'XI' 'XII' 'XII' 'XIV' 'XV'; do
         if [ $axe -eq $axe_intro ]; then                         ### pour le premier axe, la ligne majeure d'introduction
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\" title=\"__VAR__110\"><br />Introduction</a></li>" $address/HEAD.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&amp;part=0\" title=\"__VAR__110\"><br />Introduction</a></li>" $address/HEAD.tem >> $log 2>> $error
 
         elif [ $axe -eq $axe_conclu ]; then             ### pour l'avant-dernier axe, la ligne majeure de conclusion
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=$axe&part=0\" title=\"__VAR__1`echo $axe`0\"><br />Conclusion</a></li>" $address/HEAD.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=$axe&amp;part=0\" title=\"__VAR__1`echo $axe`0\"><br />Conclusion</a></li>" $address/HEAD.tem >> $log 2>> $error
 
         elif [ $axe -eq $axe_synth ]; then              ### pour le dernier axe, la ligne majeure de synthèse
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=$axe&part=0\" title=\"__VAR__1`echo $axe`0\"><br />Synthèses</a></li>" $address/HEAD.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=$axe&amp;part=0\" title=\"__VAR__1`echo $axe`0\"><br />Synthèses</a></li>" $address/HEAD.tem >> $log 2>> $error
 
         elif [ $axe -le ${structure[0]} ]; then         ### si $axe se situe toujours dans les axes existants (if $axe lower_equal(<=) $nombre_axes)
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=$axe&part=0\" title=\"__VAR__1`echo $axe`0\"><br />-- $i --</a></li>\n\t\t\t\t\t<ol>\t\n\t\t\t\t\t\t__VAR__02$axe\n\t\t\t\t\t</ol>" $address/HEAD.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=$axe&amp;part=0\" title=\"__VAR__1`echo $axe`0\"><br />-- $i --</a></li>\n\t\t\t\t\t<ol>\t\n\t\t\t\t\t\t__VAR__02$axe\n\t\t\t\t\t</ol>" $address/HEAD.tem >> $log 2>> $error
 
 ###             result :
 ###             <li><a href="work.php? axe=X &part=Y " title="__VAR__1X0"><br />-- $i_romain --</a></li>
@@ -186,7 +186,7 @@ done
 echo "[sed] variables indéfinies pour HEAD : Parties" >> $log
 for axe in `seq 1 ${structure[0]}`; do
         for part in `seq 1 ${structure[$axe]}`; do
-                sed -i -re "/__VAR__02$axe/i <li><a href=\"work.php?axe=$axe&part=$part\" title=\"__VAR__1$axe$part\"><br />(($part))</a></li>" $address/HEAD.tem
+                sed -i -re "/__VAR__02$axe/i <li><a href=\"work.php?axe=$axe&amp;part=$part\" title=\"__VAR__1$axe$part\"><br />(($part))</a></li>" $address/HEAD.tem
 ### result :    <li><a href=\"work.php?axe=$i&part=$j\" title=\"$title_mineur\">(($j))</a></li>
         done
         sed -i -re "s/__VAR__02$axe//" $address/HEAD.tem
@@ -213,19 +213,19 @@ for i in `seq 1 ${structure[0]}`; do
 ###  teste d'abord si la chaine du titre exite ou non, si oui ajoute un deux-points et le titre
 ###  les "" empechent l'expansion du titre qui causerait une erreur "Too many arguments"
         if [ $i -eq $axe_intro ] && [ -n "$intro_title" ]; then
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\">Introduction : $intro_title</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&amp;part=0\">Introduction : $intro_title</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_intro ]; then
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&part=0\">Introduction</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<li><a href=\"work.php?axe=1&amp;part=0\">Introduction</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_conclu ] && [ -n "$conclu_title" ]; then
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Conclusion : $conclu_title</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&amp;part=0\">Conclusion : $conclu_title</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_conclu ]; then
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Conclusion</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&amp;part=0\">Conclusion</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_synth ] && [ -n "$synth_title" ]; then
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Fiches de synthèse : $synth_title</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&amp;part=0\">Fiches de synthèse : $synth_title</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -eq $axe_synth ]; then
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">Fiches de synthèse</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&amp;part=0\">Fiches de synthèse</a></li>" $address/index.html.tem >> $log 2>> $error
         elif [ $i -le ${structure[0]} ]; then 
-                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&part=0\">__VAR__1`echo $i`0</a></li>\n\t\t\t\t\t<ol>\t\n\t\t\t\t\t\t__VAR__02$i\n\t\t\t\t\t</ol>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__020/i \\\t\t\t\t<br /><li><a href=\"work.php?axe=$i&amp;part=0\">__VAR__1`echo $i`0</a></li>\n\t\t\t\t\t<ol>\t\n\t\t\t\t\t\t__VAR__02$i\n\t\t\t\t\t</ol>" $address/index.html.tem >> $log 2>> $error
         fi
 done
 ### contrairement à la première, cette boucle n'est jamais dépassée, on supprime donc le repère après
@@ -236,7 +236,7 @@ sed -i -re "s/__VAR__020//" $address/index.html.tem >> $log 2>> $error
 echo "[sed] variables indéfinies pour index.html : Parties" >> $log
 for axe in `seq 1 ${structure[0]}`; do
         for part in `seq 1 ${structure[$axe]}`; do
-                sed -i -re "/__VAR__02$axe/i <li><a href=\"work.php?axe=$axe&part=$part\">__VAR__1$axe$part</a></li>" $address/index.html.tem >> $log 2>> $error
+                sed -i -re "/__VAR__02$axe/i <li><a href=\"work.php?axe=$axe&amp;part=$part\">__VAR__1$axe$part</a></li>" $address/index.html.tem >> $log 2>> $error
         done
         sed -i -re "s/__VAR__02$axe//" $address/index.html.tem >> $log 2>> $error
 done

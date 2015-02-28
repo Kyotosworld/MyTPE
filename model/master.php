@@ -1,18 +1,16 @@
 <?php
         session_start();
-        require_once('functions.php');
-
 
                         /* stockage des valeurs renvoyées par les formulaires */
-        if(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-1.php')) {
-                if(var_test($_POST['username'], 'string') &&
-                   var_test($_POST['address'], 'string') &&
-                   var_test($_POST['title'], 'string') &&
-                   var_test($_POST['title_extended'], 'string') &&
-                   var_test($_POST['class'], 'string') &&
-                   var_test($_POST['subject'], 'string') &&
-                   var_test($_POST['number_people'], 'int') &&
-                   var_test($_POST['structure_axe'], 'int')) {
+        if(isset($_POST['form']) && is_string($_POST['form']) && ($_POST['form'] == 'form-1.php')) {
+                if(is_string($_POST['username']) &&
+                   is_string($_POST['address']) &&
+                   is_string($_POST['title']) &&
+                   is_string($_POST['title_extended']) &&
+                   is_string($_POST['class']) &&
+                   is_string($_POST['subject']) &&
+                   is_string($_POST['number_people']) &&
+                   is_string($_POST['structure_axe'])) {
 
                         $_SESSION['TPE_username'] = $_POST['username'];
                         $_SESSION['TPE_address'] = $_POST['address'];
@@ -50,10 +48,10 @@
                         header('Location: ../creation.php?page=1');
                 }
         }
-        elseif(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-2.php') &&
+        elseif(isset($_POST['form']) && is_string($_POST['form']) && ($_POST['form'] == 'form-2.php') &&
                isset($_SESSION['form_1']) && ($_SESSION['form_1'])) {
                 for ($i = 1; $i <= $_SESSION['TPE_number_people']; $i++) {
-                        if(isset($_POST['people_'.$i]) && var_test($_POST['people_'.$i], 'string'))
+                        if(isset($_POST['people_'.$i]) && is_string($_POST['people_'.$i]))
                                 $_SESSION['TPE_people_'.$i] = $_POST['people_'.$i];
                         else
                                 $form_2_error = true;
@@ -62,7 +60,7 @@
                 $debut = $_SESSION['TPE_structure_intro'] + 1;
                 $fin = $_SESSION['TPE_number_axe'] - $_SESSION['TPE_structure_conclu'] - $_SESSION['TPE_structure_synth'];
                 for ($i = $debut; $i <= $fin; $i++) {
-                        if(isset($_POST['number_part_axe_'.$i]) && var_test($_POST['number_part_axe_'.$i], 'int'))
+                        if(isset($_POST['number_part_axe_'.$i]) && is_string($_POST['number_part_axe_'.$i]))
                                 $_SESSION['TPE_number_part_axe_'.$i] = $_POST['number_part_axe_'.$i];
                         else
                                 $form_2_error = true;
@@ -78,7 +76,7 @@
                         header('Location: ../creation.php?page=2');
                 }
         }
-        elseif(isset($_POST['form']) && var_test($_POST['form'], 'string') && ($_POST['form'] == 'form-3.php') &&
+        elseif(isset($_POST['form']) && is_string($_POST['form']) && ($_POST['form'] == 'form-3.php') &&
                 isset($_SESSION['form_2']) && ($_SESSION['form_2'])) {
 
                 if($_SESSION['TPE_structure_intro']) {
@@ -104,7 +102,7 @@
                 $fin = $_SESSION['TPE_number_axe'] - $_SESSION['TPE_structure_conclu'] - $_SESSION['TPE_structure_synth'];
                 for ($i = $debut; $i <= $fin; $i++) {
                         for ($j = 0; $j <= $_SESSION['TPE_number_part_axe_'.$i]; $j++) {
-                                if(isset($_POST['title_'.$i.'-'.$j]) && var_test($_POST['title_'.$i.'-'.$j], 'string'))
+                                if(isset($_POST['title_'.$i.'-'.$j]) && is_string($_POST['title_'.$i.'-'.$j]))
                                         $_SESSION['TPE_title_'.$i.'-'.$j] = $_POST['title_'.$i.'-'.$j];
                                 else
                                         $form_3_error = true;
