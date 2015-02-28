@@ -1,4 +1,5 @@
 MyTPE permet de générer un site web statique au design simpliste, et est fait pour être utilisé le plus simplement et rapidement possible.
+USER/ DOIT AVOIR LE DROIT D'ECRITURE POUR TOUT UTILISATEUR DONC LE CHMOD 707²²
 
 Il est basé sur l'architecture MVC, et ne contient que deux pages :
 * index.php : permet la connexion ou la création d'un compte
